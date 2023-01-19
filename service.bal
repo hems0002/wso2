@@ -14,4 +14,20 @@ service / on new http:Listener(9090) {
         }
         return "Hello, heartly welcome, " + name;
     }
+
+    resource function get language(string petname) returns string|error {
+        // Send a response back to the caller.
+        if petname is "" {
+            return error("petname should not be empty!");
+        }
+
+        else if petname is "dog"{
+            return petname + "says Bhaw-Bhaw";
+        }
+
+        else if petname is "cat"{
+            return petname + "says Meow";
+        }
+        return "we don't recognise this animal";
+    }
 }
